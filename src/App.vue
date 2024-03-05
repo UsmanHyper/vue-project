@@ -1,26 +1,68 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-</template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from "./components/NavBar";
+import FooTer from "./components/FooTer";
+import jQuery from 'jquery';
+// import bootstrap from 'bootstrap';
+global.jQuery = jQuery;
+global.$ = jQuery;
+
+
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
+    NavBar,
+    FooTer
+  },
+  data() {
+    return {
+      show: false,
+      username: "abcd",
+      userId: "123",
+      password: "123456"
+    };
+  },
+  methods: {
+    handleClick() {
+      this.$router.push({
+        path: '/home'
+      })
+    },
+    updateMe() {
+      alert();
+      console.log("=============")
+    },
+    deleteMe() {
+      // alert();
+      console.log("=============")
+    }
   }
 }
+
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import "~bootstrap/dist/css/bootstrap.css";
 </style>
+
+
+
+
+
+
+<template>
+
+  <NavBar />
+  <div class="continer py-5">
+    <h4>Homepage</h4>
+    <p>{{ username }}</p>
+    <button class="btn btn-primary py-2 px-3 mt-2" @click="updateMe">Click Me </button>
+    <button class="btn btn-danger py-2 px-3 mt-2" @click="updateMe">Click Me </button>
+  </div>
+
+  <FooTer></FooTer>
+
+
+
+</template>
